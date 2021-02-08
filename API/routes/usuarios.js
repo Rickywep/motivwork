@@ -17,6 +17,12 @@ router.post(
   usuarioController.crearUsuario
 );
 
+// Obtener Usuario
 router.get('/', auth, usuarioController.obtenerUsuarios)
+
+// Actualizar Usuario
+router.put('/:id', auth, usuarioController.actualizarUsuario)
+
+
 
 module.exports = router;

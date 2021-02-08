@@ -19,7 +19,7 @@ mongoose.connect(
 );
 
 // Habilitar express.json (tambien se puede usar body parser)
-app.use(express.json({ extended: true }));
+app.use(express.json({ limit: '50mb', extended: true }));
 
 app.use(cors())
 // Importar rutas

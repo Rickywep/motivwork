@@ -28,7 +28,6 @@ export default function Feedback({ token }) {
           headers: { 'x-auth-token': token },
         }
       )
-      .then((response) => console.log(response.data))
       .then(window.location.replace('/'));
   };
   return (

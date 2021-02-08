@@ -16,6 +16,9 @@ const UsuariosSchema = mongoose.Schema({
     require: true,
     trim: true,
   },
+  img: {
+      type: String,
+  },
   registro: {
     type: Date,
     default: Date.now(),

@@ -19,7 +19,7 @@ export default function NewMood({ token }) {
         createMood(polaridad, palabraConcepto);
       })
       .catch((error) => {
-        console.log(error.response.msg);
+        console.log(error);
       });
   };
   const onChangeMood = (e) => {

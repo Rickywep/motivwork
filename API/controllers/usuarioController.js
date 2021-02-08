@@ -59,9 +59,40 @@ exports.crearUsuario = async (req, res) => {
 exports.obtenerUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find();
-    res.json({usuarios})
+    res.json({ usuarios });
   } catch (error) {
     console.log('~ error', error);
     res.status(500).send('hubo un error');
+  }
+};
+
+exports.actualizarUsuario = async (req, res) => {
+  try {
+    // Extraer el usuario y comprobar si existe
+    const { nombre, img } = req.body;
+
+    const usuario = await Usuario.findById(req.params.id);
+
+    if(!usuario){
+      return res.status(404).json({msg: 'Usuario no encontrado'})
+    }
+
+    // //Crear objeto con la nueva información
+    if (nombre) {
+      usuario.nombre = nombre      
+    }
+
+    if (img) {
+      usuario.img = img      
+    }
+
+    // // Guardar Usuario
+    // usuario = await Usuario.findOneAndUpdate({_id: req.params.id}, usuario, {new: true});
+    await usuario.save()
+    res.json({ usuario })
+
+  } catch (error) {
+    console.log('~ error', error);
+    res.status(500).send('Hubo un error');
   }
 };

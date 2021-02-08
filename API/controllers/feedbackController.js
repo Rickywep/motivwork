@@ -17,7 +17,7 @@ exports.crearFeedback = async (req, res) => {
 
 exports.obtenerFeedback = async (req, res) => {
   try {
-    const feedbacks = await Feedback.find().populate('colega creador', 'nombre');
+    const feedbacks = await Feedback.find().sort({registro: -1}).populate('colega creador', 'nombre img');
     res.json({feedbacks})
   } catch (error) {
     console.log('~ error', error);
